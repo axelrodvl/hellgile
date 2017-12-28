@@ -1,6 +1,9 @@
 package co.axelrod.hellgile.game.telegram.interactions.start;
 
 import co.axelrod.hellgile.game.telegram.UserInteractionBuilder;
+import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.HumanResources;
+import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.Management;
+import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.StartSprint;
 import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.Status;
 
 /**
@@ -8,15 +11,18 @@ import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.Status;
  */
 public class StartGame extends UserInteractionBuilder {
     public StartGame(Long chatId) {
-        super(chatId);
+        super(chatId, null);
         this
-                .withName("/start")
+                .withName("start")
                 .withRequest("Добро пожаловать в Hellgile!")
                 .withRequest("Внимание! \uD83D\uDD1E! ИГРА СОДЕРЖИТ НЕЦЕНЗУРНУЮ ЛЕКСИКУ.")
                 //.withRequest("Твой новый проект: " + project.getName())
                 //.withRequest("Деньги: " + project.getMoney() + " рублей")
                 //.withRequest("Длительность: " + project.getDuration() + " дней")
                 .withRequest("Объём работ: 50 SP")
-                .withMenu(Status.class);
+                .withMenu(Status.class)
+                .withMenu(Management.class)
+                .withMenu(HumanResources.class)
+                .withMenu(StartSprint.class);
     }
 }

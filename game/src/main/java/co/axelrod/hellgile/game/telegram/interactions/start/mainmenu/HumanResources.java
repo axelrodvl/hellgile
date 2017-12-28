@@ -6,12 +6,11 @@ import co.axelrod.hellgile.game.telegram.interactions.start.StartGame;
 /**
  * Created by Vadim Axelrod (vadim@axelrod.co) on 29.12.2017.
  */
-public class Status extends UserInteractionBuilder {
-    public Status(Long chatId) {
+public class HumanResources extends UserInteractionBuilder {
+    public HumanResources(Long chatId) {
         super(chatId, StartGame.class);
         this
-                .withName("Статус проекта")
-                .withRequest("Текущий статус проекта:")
-                .withRequest("Объём работ: 50 SP");
+                .withName("HR")
+                .withRequest("Здесь вы можете нанимать новых сотрудников");
     }
 }
