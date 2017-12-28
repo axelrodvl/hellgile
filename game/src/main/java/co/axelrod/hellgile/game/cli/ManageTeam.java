@@ -1,7 +1,7 @@
 package co.axelrod.hellgile.game.cli;
 
-import co.axelrod.hellgile.management.Project;
-import co.axelrod.hellgile.people.internal.worker.AbstractWorker;
+import co.axelrod.hellgile.model.Project;
+import co.axelrod.hellgile.model.employees.AbstractEmployee;
 
 /**
  * Created by Vadim Axelrod (vadim@axelrod.co) on 11.12.2017.
@@ -18,7 +18,7 @@ public class ManageTeam extends AbstractMenu {
         outputStrings.add("Управление командой");
         outputStrings.add("--------------------");
 
-        for(AbstractWorker worker : project.getWorkers()) {
+        for(AbstractEmployee worker : project.getEmployees()) {
             submenus.add(new ManageWorker(project, worker));
         }
     }

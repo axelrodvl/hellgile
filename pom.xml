@@ -35,7 +35,8 @@
 		<module>docker</module>
 		<module>game</module>
 		<module>storage</module>
-	</modules>
+        <module>model</module>
+    </modules>
 
 	<build>
 		<plugins>

@@ -25,5 +25,10 @@
             <artifactId>telegrambots</artifactId>
             <version>3.5</version>
         </dependency>
+        <dependency>
+            <groupId>co.axelrod</groupId>
+            <artifactId>model</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

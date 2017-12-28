@@ -1,6 +1,7 @@
 package co.axelrod.hellgile.game;
 
-import co.axelrod.hellgile.management.Project;
+//import co.axelrod.hellgile.management.Project;
+import co.axelrod.hellgile.model.Project;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

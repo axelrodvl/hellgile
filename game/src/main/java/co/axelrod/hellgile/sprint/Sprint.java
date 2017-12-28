@@ -1,7 +1,7 @@
 package co.axelrod.hellgile.sprint;
 
 import co.axelrod.hellgile.game.cli.PlanningSprint;
-import co.axelrod.hellgile.management.Project;
+import co.axelrod.hellgile.model.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,7 +32,7 @@ public class Sprint {
         System.out.println(name);
         System.out.println("\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC\uD83D\uDCCC");
         System.out.println();
-        new PlanningSprint(project).show();
+        //new PlanningSprint(project).show();
     }
 
     public void runSprint() {

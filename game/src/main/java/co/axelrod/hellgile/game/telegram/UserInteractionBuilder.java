@@ -5,13 +5,14 @@ import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 
+import java.lang.reflect.Constructor;
 import java.util.*;
 
 /**
  * Created by Vadim Axelrod (vadim@axelrod.co) on 26.12.2017.
  */
-public class UserInteractionBuilder {
-    private Long chatId;
+public abstract class UserInteractionBuilder {
+    protected Long chatId;
 
     private List<SendMessage> messagesToSend = new ArrayList<>();
     private Map<String, UserInteractionBuilder> nextInteractions = new HashMap<>();
@@ -43,30 +44,41 @@ public class UserInteractionBuilder {
         return this;
     }
 
-    public UserInteractionBuilder withMenu(UserInteractionBuilder userInteractionBuilder) {
-        this.nextInteractions.put(userInteractionBuilder.menuItemName, userInteractionBuilder);
-        KeyboardRow keyboardRow = new KeyboardRow();
-        keyboardRow.add(userInteractionBuilder.menuItemName);
-        this.keyboard.add(keyboardRow);
-        return this;
+    public UserInteractionBuilder withMenu(Class userInteractionBuilderClass) {
+        try {
+            Constructor<UserInteractionBuilder> constructor = userInteractionBuilderClass.getConstructor(Long.class);
+            UserInteractionBuilder userInteractionBuilder = constructor.newInstance(chatId);
+
+            this.nextInteractions.put(userInteractionBuilder.menuItemName, userInteractionBuilder);
+            KeyboardRow keyboardRow = new KeyboardRow();
+            keyboardRow.add(userInteractionBuilder.menuItemName);
+            this.keyboard.add(keyboardRow);
+            return this;
+        } catch (Exception ex) {
+            throw new RuntimeException();
+        }
     }
 
-    public List<SendMessage> build(Update update) {
-          if(!nextInteractions.containsKey(update.getMessage().getText())) {
+    protected List<SendMessage> build(Update update) {
+          if(update != null && !nextInteractions.containsKey(update.getMessage().getText())) {
 
             ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
             keyboardMarkup.setKeyboard(keyboard);
 
             if(messagesToSend.isEmpty()) {
-                this.messagesToSend.add(createMessage().setText("").setReplyMarkup(keyboardMarkup));
+                this.messagesToSend.add(createMessage().setText("Действия:").setReplyMarkup(keyboardMarkup));
             } else {
                 this.messagesToSend.get(messagesToSend.size() - 1).setReplyMarkup(keyboardMarkup);
             }
 
             return messagesToSend;
         } else {
-            UserInteractionBuilder nextInteraction = nextInteractions.get(update.getMessage().getText());
-            return nextInteraction.build(null);
+              if(update != null) {
+                  UserInteractionBuilder nextInteraction = nextInteractions.get(update.getMessage().getText());
+                  return nextInteraction.build(null);
+              } else {
+                  return null;
+              }
         }
     }
 

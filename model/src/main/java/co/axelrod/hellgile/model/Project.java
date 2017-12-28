@@ -1,9 +1,8 @@
-package co.axelrod.hellgile.management;
+package co.axelrod.hellgile.model;
 
-import co.axelrod.hellgile.people.external.Customer;
-import co.axelrod.hellgile.sprint.Sprint;
-import co.axelrod.hellgile.people.internal.worker.AbstractWorker;
-import co.axelrod.hellgile.tasks.Task;
+import co.axelrod.hellgile.model.customer.Customer;
+import co.axelrod.hellgile.model.employees.AbstractEmployee;
+import co.axelrod.hellgile.model.tasks.Task;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,12 +17,10 @@ import java.util.List;
 @Setter
 public class Project {
     private String name;
-
-    private Boolean isDone = false;
-
     private Integer valuation = 0;
     private Integer duration = 0;
-    private List<AbstractWorker> workers = new ArrayList<AbstractWorker>();
+    private List<AbstractEmployee> employees = new ArrayList<AbstractEmployee>();
+
     private Integer currentSprint = 0;
     private Integer daysLeft = 0;
 
@@ -31,7 +28,8 @@ public class Project {
 
     private Customer customer;
 
-    private List<Task> tasks = new ArrayList<Task>();
+    private List<Task> tasksToDo = new ArrayList<Task>();
+    private List<Task> tasksDone = new ArrayList<Task>();
 
     private Integer notFoundBugs = 0;
 
@@ -45,13 +43,18 @@ public class Project {
                 + ("Проект: " + name + "\n")
                 + ("--------------------\n")
                 + ("\uD83D\uDCBC Заказчик: " + customer.getName() + "\n")
-                + ("\uD83D\uDCDD Статус: " + (isDone ? "завершен" : "в работе") + "\n")
+                + ("\uD83D\uDCDD Статус: " + (isDone() ? "завершен" : "в работе") + "\n")
                 + ("\uD83D\uDD70 Расчетная длительность: " + duration + "\n")
                 + ("\uD83D\uDD52 Дней осталось: " + daysLeft + "\n")
-                + ("\uD83D\uDC82 Команда: " + workers.size() + " человек" + "\n")
+                + ("\uD83D\uDC82 Команда: " + employees.size() + " человек" + "\n")
                 + ("☑️ Текущий спринт: " + currentSprint + "\n")
                 + ("\uD83D\uDCB0 Осталось денег: " + money + " рублей" + "\n")
-                + ("✏️ Осталось задач: " + tasks.size() + "\n")
+                + ("✏️ Осталось задач: " + tasksToDo.size() + "\n")
+                + ("✏️ Выполнено задач: " + tasksToDo.size() + "\n")
                 + ("\uD83D\uDC1B Известных багов: " + foundBugs);
+    }
+
+    public Boolean isDone() {
+        return false;
     }
 }

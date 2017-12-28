@@ -1,20 +1,20 @@
 package co.axelrod.hellgile.game.cli;
 
-import co.axelrod.hellgile.management.Project;
-import co.axelrod.hellgile.people.internal.worker.AbstractWorker;
+import co.axelrod.hellgile.model.Project;
+import co.axelrod.hellgile.model.employees.AbstractEmployee;
 
 /**
  * Created by Vadim Axelrod (vadim@axelrod.co) on 11.12.2017.
  */
 public class ManageWorker extends AbstractMenu {
-    private AbstractWorker worker;
+    private AbstractEmployee worker;
 
-    public ManageWorker(Project project, AbstractWorker worker) {
+    public ManageWorker(Project project, AbstractEmployee worker) {
         this.project = project;
         this.worker = worker;
 
         this.withInput = true;
-        this.description = "👶 " + worker.getName() + ", " + worker.getWorkerGrade() + " " + worker.getClass().getSimpleName();
+        this.description = "👶 " + worker.getName() + ", " + worker.getGrade() + " " + worker.getClass().getSimpleName();
         this.exitMessage = "Закончить";
 
         outputStrings.add("--------------------");

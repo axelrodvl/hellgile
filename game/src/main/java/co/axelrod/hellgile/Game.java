@@ -1,11 +1,11 @@
 package co.axelrod.hellgile;
 
 import co.axelrod.hellgile.game.telegram.UserInteractionBuilder;
-import co.axelrod.hellgile.management.Project;
-import co.axelrod.hellgile.people.external.Customer;
-import co.axelrod.hellgile.people.internal.worker.AbstractWorker;
-import co.axelrod.hellgile.people.internal.worker.Developer;
-import co.axelrod.hellgile.people.internal.worker.params.Temperament;
+
+import co.axelrod.hellgile.model.customer.Customer;
+import co.axelrod.hellgile.model.employees.AbstractEmployee;
+import co.axelrod.hellgile.model.employees.Developer;
+import co.axelrod.hellgile.model.employees.params.Temperament;
 import co.axelrod.hellgile.sprint.Sprint;
 import lombok.Getter;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -18,6 +18,7 @@ import java.util.List;
  * Created by Vadim Axelrod (vadim@axelrod.co) on 11.12.2017.
  */
 public class Game {
+    /*
     private Long id;
 
     public UserInteractionBuilder lastInteraction;
@@ -70,7 +71,7 @@ public class Game {
                 "Объём работ: 50 SP\n"); // TODO
 
         System.out.println("В твоём распоряжении:");
-        for(AbstractWorker worker : project.getWorkers()) {
+        for(AbstractEmployee worker : project.getWorkers()) {
             System.out.println(worker.toString());
         }
 
@@ -138,7 +139,7 @@ public class Game {
                 "Объём работ: 50 SP\n"));
 
         StringBuilder workers = new StringBuilder("В твоём распоряжении:");
-        for(AbstractWorker worker : project.getWorkers()) {
+        for(AbstractEmployee worker : project.getWorkers()) {
             workers.append(worker.toString());
         }
         messages.add(prepareMessage(workers.toString()));
@@ -188,8 +189,8 @@ public class Game {
         }
         */
 
-        return messages;
-    }
+        //return messages;
+    //}
 
     /*
     public void sendCustomKeyboard(Long chatId) {
@@ -245,6 +246,7 @@ public class Game {
     }
     */
 
+    /*
     public void saveGame() {
         // TODO
     }
@@ -259,4 +261,5 @@ public class Game {
         message.setText(text);
         return message;
     }
+    */
 }

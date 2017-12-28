@@ -1,7 +1,7 @@
 package co.axelrod.hellgile.game.cli;
 
-import co.axelrod.hellgile.management.Project;
-import co.axelrod.hellgile.people.internal.worker.AbstractWorker;
+import co.axelrod.hellgile.model.Project;
+import co.axelrod.hellgile.model.employees.AbstractEmployee;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 public abstract class AbstractMenu {
     Project project;
-    AbstractWorker worker = null;
+    AbstractEmployee worker = null;
 
     protected String description = null;
 
@@ -98,7 +98,7 @@ public abstract class AbstractMenu {
         return (number > 0 && number <= maxValue);
     }
 
-    protected void action(Project project, AbstractWorker worker) {
+    protected void action(Project project, AbstractEmployee worker) {
 
     }
 }
