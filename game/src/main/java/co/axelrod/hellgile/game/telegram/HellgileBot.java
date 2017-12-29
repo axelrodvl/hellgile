@@ -7,6 +7,7 @@ import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ import java.util.Map;
  */
 public class HellgileBot extends TelegramLongPollingBot {
     private Map<Long, Game> activeGames = new HashMap<>();
-    private Map<Long, UserInteractionBuilder> interactions = new HashMap<>();
+    private Map<Long, Class> interactions = new HashMap<>();
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -23,6 +24,7 @@ public class HellgileBot extends TelegramLongPollingBot {
             Game game;
             //Project project;
             Long chatId = update.getMessage().getChatId();
+            System.out.println("new request: " + chatId);
 
             // Create new game if it's new user
             if(!activeGames.containsKey(chatId)) {
@@ -32,21 +34,29 @@ public class HellgileBot extends TelegramLongPollingBot {
             game = activeGames.get(chatId);
             //project = game.getProject();
 
-            UserInteractionBuilder interaction;
+            Class interaction;
 
             if(interactions.get(chatId) == null) {
-                interaction = new StartGame(chatId);
+                interaction = StartGame.class;
                 interactions.put(chatId, interaction);
             } else {
                 interaction = interactions.get(chatId);
             }
 
             try {
-                for(SendMessage message : interaction.build(update)) {
+                UserInteractionBuilder userInteractionBuilder;
+                try {
+                    Constructor<UserInteractionBuilder> constructor = interaction.getConstructor(Long.class);
+                    userInteractionBuilder = constructor.newInstance(chatId);
+                } catch (Exception ex) {
+                    throw new RuntimeException();
+                }
+
+                for(SendMessage message : userInteractionBuilder.build(update)) {
                     execute(message);
                 }
 
-                //execute(activeGames.get(chatId).action(update));
+                interactions.put(chatId, userInteractionBuilder.getNextInteraction());
             } catch (TelegramApiException ex) {
                 ex.printStackTrace();
             }

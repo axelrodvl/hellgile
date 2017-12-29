@@ -1,5 +1,6 @@
 package co.axelrod.hellgile.game.telegram;
 
+import lombok.Getter;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
@@ -21,6 +22,9 @@ public abstract class UserInteractionBuilder {
     private String menuItemName = null;
     private ReplyKeyboardMarkup replyKeyboardMarkup = null;
     List<KeyboardRow> keyboard = new ArrayList<>();
+
+    @Getter
+    private Class nextInteraction = null;
 
     public UserInteractionBuilder(Long chatId, Class parentInteraction) {
         this.chatId = chatId;
@@ -68,7 +72,9 @@ public abstract class UserInteractionBuilder {
             this.keyboard.add(keyboardRow);
         }
 
-          if(update == null || !nextInteractions.containsKey(update.getMessage().getText())) {
+          if(update == null ||
+                  (!nextInteractions.containsKey(update.getMessage().getText())
+                          && !update.getMessage().getText().equals("Назад"))) {
             if(keyboard != null) {
                 ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
                 keyboardMarkup.setKeyboard(keyboard);
@@ -79,18 +85,17 @@ public abstract class UserInteractionBuilder {
                     this.messagesToSend.get(messagesToSend.size() - 1).setReplyMarkup(keyboardMarkup);
                 }
             }
-
             return messagesToSend;
         } else {
-            Class interaction;
               if(update.getMessage().getText().equals("Назад")) {
-                  interaction = parentInteraction;
+                  nextInteraction = parentInteraction;
+
               } else {
-                  interaction = nextInteractions.get(update.getMessage().getText());
+                  nextInteraction = nextInteractions.get(update.getMessage().getText());
               }
 
               try {
-                  Constructor<UserInteractionBuilder> constructor = interaction.getConstructor(Long.class);
+                  Constructor<UserInteractionBuilder> constructor = nextInteraction.getConstructor(Long.class);
                   UserInteractionBuilder userInteractionBuilder = constructor.newInstance(chatId);
                   return userInteractionBuilder.build(null);
               } catch (Exception ex) {
