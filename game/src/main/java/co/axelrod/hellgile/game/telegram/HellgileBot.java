@@ -1,7 +1,7 @@
 package co.axelrod.hellgile.game.telegram;
 
 import co.axelrod.hellgile.Game;
-import co.axelrod.hellgile.game.telegram.interactions.start.StartGame;
+import co.axelrod.hellgile.game.telegram.interactions.start.MainMenu;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -37,7 +37,7 @@ public class HellgileBot extends TelegramLongPollingBot {
             Class interaction;
 
             if(interactions.get(chatId) == null) {
-                interaction = StartGame.class;
+                interaction = MainMenu.class;
                 interactions.put(chatId, interaction);
             } else {
                 interaction = interactions.get(chatId);

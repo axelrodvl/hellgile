@@ -1,16 +1,13 @@
 package co.axelrod.hellgile.game.telegram.interactions.start;
 
 import co.axelrod.hellgile.game.telegram.UserInteractionBuilder;
-import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.HumanResources;
-import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.Management;
-import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.StartSprint;
-import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.Status;
+import co.axelrod.hellgile.game.telegram.interactions.start.mainmenu.*;
 
 /**
  * Created by Vadim Axelrod (vadim@axelrod.co) on 26.12.2017.
  */
-public class StartGame extends UserInteractionBuilder {
-    public StartGame(Long chatId) {
+public class MainMenu extends UserInteractionBuilder {
+    public MainMenu(Long chatId) {
         super(chatId, null);
         this
                 .withName("start")

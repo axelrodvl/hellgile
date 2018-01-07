@@ -1,5 +1,6 @@
 package co.axelrod.hellgile.game.telegram;
 
+import co.axelrod.hellgile.model.Project;
 import lombok.Getter;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
@@ -17,14 +18,14 @@ public abstract class UserInteractionBuilder {
     protected Class parentInteraction;
 
     private List<SendMessage> messagesToSend = new ArrayList<>();
-    private Map<String, Class> nextInteractions = new HashMap<>();
+    protected Map<String, Class> nextInteractions = new HashMap<>();
 
-    private String menuItemName = null;
+    protected String menuItemName = null;
     private ReplyKeyboardMarkup replyKeyboardMarkup = null;
     List<KeyboardRow> keyboard = new ArrayList<>();
 
     @Getter
-    private Class nextInteraction = null;
+    protected Class nextInteraction = null;
 
     public UserInteractionBuilder(Long chatId, Class parentInteraction) {
         this.chatId = chatId;
