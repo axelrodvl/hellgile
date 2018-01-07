@@ -11,5 +11,6 @@
 **/bin/**
 
 game/src/main/java/co/axelrod/hellgile/game/telegram/TokenStorageImpl.java
+classes/artifacts/game_jar/game.jar
 docker/storage
 game/IDEAS.MD
