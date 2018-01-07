@@ -12,7 +12,6 @@ public class MainMenu extends UserInteractionBuilder {
         this
                 .withName("start")
                 .withRequest("Добро пожаловать в Hellgile!")
-                .withRequest("Внимание! \uD83D\uDD1E! ИГРА СОДЕРЖИТ НЕЦЕНЗУРНУЮ ЛЕКСИКУ.")
                 //.withRequest("Твой новый проект: " + project.getName())
                 //.withRequest("Деньги: " + project.getMoney() + " рублей")
                 //.withRequest("Длительность: " + project.getDuration() + " дней")

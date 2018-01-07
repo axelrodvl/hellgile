@@ -4,6 +4,7 @@ import co.axelrod.hellgile.model.Project;
 import lombok.Getter;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
+import org.telegram.telegrambots.api.objects.User;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 
@@ -14,6 +15,9 @@ import java.util.*;
  * Created by Vadim Axelrod (vadim@axelrod.co) on 26.12.2017.
  */
 public abstract class UserInteractionBuilder {
+    // TODO wire here game/project storage?
+    protected Map<Long, Project> projectStorage = new HashMap<>(); // TODO !!! Not empty HashMap!
+
     protected Long chatId;
     protected Class parentInteraction;
 
@@ -63,6 +67,18 @@ public abstract class UserInteractionBuilder {
             return this;
         } catch (Exception ex) {
             throw new RuntimeException();
+        }
+    }
+
+    public UserInteractionBuilder withMenu(UserInteractionBuilder userInteractionBuilderInstance) {
+        try {
+            this.nextInteractions.put(userInteractionBuilderInstance.menuItemName, userInteractionBuilderInstance.getClass());
+            KeyboardRow keyboardRow = new KeyboardRow();
+            keyboardRow.add(userInteractionBuilderInstance.menuItemName);
+            this.keyboard.add(keyboardRow);
+            return this;
+        } catch (Exception ex) {
+            throw new RuntimeException("Empty or invalid instance of UserInteractionBuilder");
         }
     }
 
