@@ -17,6 +17,13 @@
             <artifactId>mongodb-driver</artifactId>
             <version>3.6.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>co.axelrod</groupId>
+            <artifactId>model</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>co.axelrod</groupId>
             <artifactId>game</artifactId>

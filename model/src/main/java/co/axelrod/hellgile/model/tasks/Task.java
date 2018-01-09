@@ -13,4 +13,8 @@ public class Task {
     private String name;
     private Integer storyPoints;
     private Grade workerGrade;
+
+    public Task () {
+        // TODO calculate random task
+    }
 }

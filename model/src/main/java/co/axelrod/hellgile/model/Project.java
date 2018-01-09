@@ -2,6 +2,7 @@ package co.axelrod.hellgile.model;
 
 import co.axelrod.hellgile.model.customer.Customer;
 import co.axelrod.hellgile.model.employees.AbstractEmployee;
+import co.axelrod.hellgile.model.employees.Developer;
 import co.axelrod.hellgile.model.tasks.Task;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,18 +17,22 @@ import java.util.List;
 @Getter
 @Setter
 public class Project {
+    private static final String CURRENCY = "RUB";
+
     private String name;
-    private Integer valuation = 0;
+
     private Integer duration = 0;
     private List<AbstractEmployee> employees = new ArrayList<AbstractEmployee>();
 
     private Integer currentSprint = 0;
-    private Integer daysLeft = 0;
+    private Integer daysLeft;
 
-    private Integer money = 0;
+    private Integer valuation;
+    private Integer money;
 
     private Customer customer;
 
+    private Integer storyPoints = 0;
     private List<Task> tasksToDo = new ArrayList<Task>();
     private List<Task> tasksDone = new ArrayList<Task>();
 
@@ -56,5 +61,45 @@ public class Project {
 
     public Boolean isDone() {
         return false;
+    }
+
+    Project() {
+        // TODO calculate balance
+
+        // Generate new project
+        name = "Интеграционная шина";
+        duration = generateNumber(60, 365);
+        daysLeft = duration;
+        valuation = generateNumber(1000000, 10000000);
+
+        storyPoints = generateNumber(200, 3000);
+
+        // Fill tasks list by story points
+        Integer storyPointsToGenerate = storyPoints;
+        while(storyPointsToGenerate != 0) {
+            Task taskToDo = new Task();
+
+            if(storyPointsToGenerate - taskToDo.getStoryPoints() < 0) {
+                taskToDo.setStoryPoints(storyPointsToGenerate);
+            }
+
+            tasksToDo.add(taskToDo);
+            storyPointsToGenerate -= taskToDo.getStoryPoints();
+        }
+
+        Developer developer = new Developer();
+        employees.add(developer);
+
+
+
+
+
+
+
+    }
+
+    private Integer generateNumber(Integer from, Integer to) {
+        // TODO
+        return 1000000;
     }
 }
