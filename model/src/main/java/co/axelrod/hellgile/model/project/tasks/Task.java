@@ -1,6 +1,6 @@
-package co.axelrod.hellgile.model.tasks;
+package co.axelrod.hellgile.model.project.tasks;
 
-import co.axelrod.hellgile.model.employees.params.Grade;
+import co.axelrod.hellgile.model.project.employees.params.Grade;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Task {
+public abstract class Task {
     private String name;
     private Integer storyPoints;
     private Grade workerGrade;

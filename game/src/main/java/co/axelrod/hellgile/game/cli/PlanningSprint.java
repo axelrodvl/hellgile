@@ -1,6 +1,6 @@
 package co.axelrod.hellgile.game.cli;
 
-import co.axelrod.hellgile.model.Project;
+import co.axelrod.hellgile.model.project.Project;
 
 /**
  * Created by Vadim Axelrod (vadim@axelrod.co) on 11.12.2017.

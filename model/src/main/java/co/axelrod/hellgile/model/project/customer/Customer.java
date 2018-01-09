@@ -1,4 +1,4 @@
-package co.axelrod.hellgile.model.customer;
+package co.axelrod.hellgile.model.project.customer;
 
 import lombok.Getter;
 import lombok.Setter;

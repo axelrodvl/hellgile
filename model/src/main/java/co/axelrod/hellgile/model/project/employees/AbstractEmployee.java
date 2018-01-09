@@ -1,9 +1,9 @@
-package co.axelrod.hellgile.model.employees;
+package co.axelrod.hellgile.model.project.employees;
 
-import co.axelrod.hellgile.model.employees.params.Grade;
-import co.axelrod.hellgile.model.employees.params.Skill;
-import co.axelrod.hellgile.model.employees.params.Temperament;
-import co.axelrod.hellgile.model.tasks.Task;
+import co.axelrod.hellgile.model.project.employees.params.Grade;
+import co.axelrod.hellgile.model.project.employees.params.Skill;
+import co.axelrod.hellgile.model.project.employees.params.Temperament;
+import co.axelrod.hellgile.model.project.tasks.Task;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +24,7 @@ public abstract class AbstractEmployee {
     private Integer experience = 0;
     private Integer mood = 100;
 
-
+    // Нагрузка на будущий спринт (добивать задачами)
 
     //public abstract void doTask(Task task);
 
@@ -54,4 +54,22 @@ public abstract class AbstractEmployee {
                 + ("Уровень: " + experience + "\n")
                 + ("Настроение: " + mood + "\n");
     }
+
+    /*
+    public abstract void assignTask(Task task);
+
+    public abstract void assignLearningCourse(Task task);
+
+    public abstract void putOnLeave();
+
+    public abstract void compliment();
+
+    public abstract void criticize();
+
+    public abstract void grabABeer();
+
+    public abstract void giveBonus();
+
+    public abstract void fire();
+    */
 }

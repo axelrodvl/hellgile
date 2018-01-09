@@ -1,19 +1,5 @@
 package co.axelrod.hellgile;
 
-import co.axelrod.hellgile.game.telegram.UserInteractionBuilder;
-
-import co.axelrod.hellgile.model.customer.Customer;
-import co.axelrod.hellgile.model.employees.AbstractEmployee;
-import co.axelrod.hellgile.model.employees.Developer;
-import co.axelrod.hellgile.model.employees.params.Temperament;
-import co.axelrod.hellgile.sprint.Sprint;
-import lombok.Getter;
-import org.telegram.telegrambots.api.methods.send.SendMessage;
-import org.telegram.telegrambots.api.objects.Update;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Vadim Axelrod (vadim@axelrod.co) on 11.12.2017.
  */

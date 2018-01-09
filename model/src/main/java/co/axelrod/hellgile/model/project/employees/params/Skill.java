@@ -1,4 +1,4 @@
-package co.axelrod.hellgile.model.employees.params;
+package co.axelrod.hellgile.model.project.employees.params;
 
 /**
  * Created by Vadim Axelrod (vadim@axelrod.co) on 11.12.2017.

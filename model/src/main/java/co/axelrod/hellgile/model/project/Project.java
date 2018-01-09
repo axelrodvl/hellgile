@@ -1,9 +1,9 @@
-package co.axelrod.hellgile.model;
+package co.axelrod.hellgile.model.project;
 
-import co.axelrod.hellgile.model.customer.Customer;
-import co.axelrod.hellgile.model.employees.AbstractEmployee;
-import co.axelrod.hellgile.model.employees.Developer;
-import co.axelrod.hellgile.model.tasks.Task;
+import co.axelrod.hellgile.model.project.customer.Customer;
+import co.axelrod.hellgile.model.project.employees.AbstractEmployee;
+import co.axelrod.hellgile.model.project.employees.Developer;
+import co.axelrod.hellgile.model.project.tasks.Task;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -75,6 +75,7 @@ public class Project {
         storyPoints = generateNumber(200, 3000);
 
         // Fill tasks list by story points
+        /*
         Integer storyPointsToGenerate = storyPoints;
         while(storyPointsToGenerate != 0) {
             Task taskToDo = new Task();
@@ -89,7 +90,7 @@ public class Project {
 
         Developer developer = new Developer();
         employees.add(developer);
-
+*/
 
 
 

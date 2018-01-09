@@ -1,7 +1,6 @@
 package co.axelrod.hellgile.sprint;
 
-import co.axelrod.hellgile.game.cli.PlanningSprint;
-import co.axelrod.hellgile.model.Project;
+import co.axelrod.hellgile.model.project.Project;
 import lombok.Getter;
 import lombok.Setter;
 

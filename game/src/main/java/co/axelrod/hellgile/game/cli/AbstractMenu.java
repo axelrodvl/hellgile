@@ -1,7 +1,7 @@
 package co.axelrod.hellgile.game.cli;
 
-import co.axelrod.hellgile.model.Project;
-import co.axelrod.hellgile.model.employees.AbstractEmployee;
+import co.axelrod.hellgile.model.project.Project;
+import co.axelrod.hellgile.model.project.employees.AbstractEmployee;
 import lombok.Getter;
 import lombok.Setter;
 

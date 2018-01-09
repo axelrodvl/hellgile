@@ -1,10 +1,9 @@
 package co.axelrod.hellgile.game.telegram;
 
-import co.axelrod.hellgile.model.Project;
+import co.axelrod.hellgile.model.project.Project;
 import lombok.Getter;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
-import org.telegram.telegrambots.api.objects.User;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 
