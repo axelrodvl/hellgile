@@ -1,2 +1,3 @@
 Tasks:
-- Mock UserInteractionBuilder to CLI instead of Telegram
+- Integrate Spring DI
+- Form menu
