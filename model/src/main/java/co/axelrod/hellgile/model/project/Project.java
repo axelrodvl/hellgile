@@ -63,7 +63,7 @@ public class Project {
         return false;
     }
 
-    Project() {
+    public Project() {
         // TODO calculate balance
 
         // Generate new project
